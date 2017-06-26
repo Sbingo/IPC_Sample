@@ -145,8 +145,7 @@ public class MessengerClient extends Activity {
         // class name because there is no reason to be able to let other
         // applications replace our component.
         if (!mIsBound) {
-            bindService(new Intent(MessengerClient.this,
-                    MessengerService.class), mConnection, Context.BIND_AUTO_CREATE);
+            bindService(new Intent(MessengerClient.this, MessengerService.class), mConnection, Context.BIND_AUTO_CREATE);
             mIsBound = true;
             mCallbackText.setText("Binding……");
         }
@@ -195,5 +194,11 @@ public class MessengerClient extends Activity {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        doUnbindService();
     }
 }

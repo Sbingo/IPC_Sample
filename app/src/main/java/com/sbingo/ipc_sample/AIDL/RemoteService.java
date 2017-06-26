@@ -3,6 +3,8 @@ package com.sbingo.ipc_sample.AIDL;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.Process;
+import android.os.RemoteException;
 import android.support.annotation.Nullable;
 
 /**
@@ -21,6 +23,11 @@ public class RemoteService extends Service {
     private final IRemoteService.Stub mBinder = new IRemoteService.Stub() {
         public int getPid() {
             return Process.myPid();
+        }
+
+        @Override
+        public int add(int a, int b) throws RemoteException {
+            return a + b;
         }
 
         public void basicTypes(int anInt, long aLong, boolean aBoolean,
