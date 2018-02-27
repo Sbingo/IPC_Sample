@@ -21,6 +21,7 @@ public class RemoteService extends Service {
     }
 
     private final IRemoteService.Stub mBinder = new IRemoteService.Stub() {
+        @Override
         public int getPid() {
             return Process.myPid();
         }
@@ -30,6 +31,7 @@ public class RemoteService extends Service {
             return a + b;
         }
 
+        @Override
         public void basicTypes(int anInt, long aLong, boolean aBoolean,
                                float aFloat, double aDouble, String aString) {
             // Does nothing

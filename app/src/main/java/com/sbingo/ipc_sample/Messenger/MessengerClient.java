@@ -98,6 +98,7 @@ public class MessengerClient extends Activity {
      * Class for interacting with the main interface of the service.
      */
     private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
         public void onServiceConnected(ComponentName className,
                                        IBinder service) {
             // This is called when the connection with the service has been
@@ -130,6 +131,7 @@ public class MessengerClient extends Activity {
             Toast.makeText(MessengerClient.this, "已连接服务端", Toast.LENGTH_SHORT).show();
         }
 
+        @Override
         public void onServiceDisconnected(ComponentName className) {
             // This is called when the connection with the service has been
             // unexpectedly disconnected -- that is, its process crashed.

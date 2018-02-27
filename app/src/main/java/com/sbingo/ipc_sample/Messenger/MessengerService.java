@@ -85,12 +85,10 @@ public class MessengerService extends Service {
                     }
                     break;
                 case MSG_ADD:
-                    for (Messenger mClient : mClients) {
-                        try {
-                            mClient.send(Message.obtain(null, MSG_SET_VALUE, add(msg.arg1, msg.arg2), 0));
-                        } catch (RemoteException e) {
-                            mClients.remove(mClient);
-                        }
+                    try {
+                        msg.replyTo.send(Message.obtain(null, MSG_SET_VALUE, add(msg.arg1, msg.arg2), 0));
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
                     }
                     break;
                 default:
